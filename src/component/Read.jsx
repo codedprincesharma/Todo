@@ -1,13 +1,15 @@
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { todocontext } from "./Wrapper";
 
-const Read = (props) => {
-  const todo = props.todos;
-  const settodo =props.settodos
+const Read = () => {
+  const [todo, settodo] = useContext(todocontext);
+  
 
   const delethandler = (id) => {
-   const delettodo = todo.filter((item) => item.id != id);
-   settodo(delettodo)
-   toast.error("Todo deleted!")
+    const delettodo = todo.filter((item) => item.id != id);
+    settodo(delettodo);
+    toast.error("Todo deleted!");
   };
   return (
     <div className="flex flex-col items-center p-6 space-y-4">
